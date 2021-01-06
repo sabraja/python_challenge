@@ -15,16 +15,16 @@ greatest_decrease=0
 greatest_decrease_month=0 
 
 # Set Path For File 
-csvpath = os.path.join(".","PyBank", "Resources", "budget_data.csv" )
+csvpath = os.path.join("..", "PyBank", "Resources", "budget_data.csv")
 
 # Open & Read CSV File 
-with open(csvpath, newline="") as csvfile:
+with open(csvpath, newline= "") as csvfile:
 
 #csv Reader Specifies the delimiter & Variable that holds the contents 
-csvreader = csv.reader(csvfile, delimiter= ".")
+    csvreader= csv.reader(csvfile, delimiter= ".")
 
 #Header Row will be read first (If there is no Header Skip)
-csv_header = next(csvreader)
+csv_header= next(csvreader)
 row = next(csvreader)
 
 #Calculate Total Number of Months, Net Amount of "Profit/Losses" and set Variables for Rows 
@@ -35,7 +35,7 @@ greatest_increase = int(row[1])
 greatest_increase_month = row[0]
 
 #Read Row of data after Header 
-for row in csvreader
+for row in csvreader:
 
     #Calculate Total Number of Months
     total_months += 1
@@ -49,14 +49,14 @@ for row in csvreader
     month_count.append(row[0])
 
     #Calculate the Greatest Increase 
-    if int(row[1]) > greatest_increase
-    greatest_increase = int(row[1])
-    greatest_increase_month = row [0]
+    if int(row[1]) > greatest_increase:
+        greatest_increase = int(row[1])
+        greatest_increase_month = row [0]
 
     #Calculate the Greatest Decrease
-    if int(row[1])< greatest_decrease
-    greatest_decrease = int(row[1])
-    greatest_decrease_month= (row[0])
+    if int(row[1])< greatest_decrease:
+        greatest_decrease = int(row[1])
+        greatest_decrease_month= (row[0])
 
     #Calculate the Avg & the Date 
     average_change = sum(monthly_change)/len(monthly_change)
@@ -79,10 +79,10 @@ output_file = os.path.join(".", "PyBank", "Resources", "budget_data_revised.text
 with open(output_file, "w,") as txtfile:
 
 #Print New Data 
-txtfile.write(f"Financial Analysis\n")
-txtfile.write(f"--------------------")
-txtfile.write(f"Total Months: {total_months}\n")
-txtfile.write(f"Total:{net_amount}\n")
-txtfile.write(f"Average Change: {average_change}\n")
-txtfile.write(f"Greatest Increase in Profits:, {greatest_increase_month},({highest})")
-txtfile.write(f"Greatest Decrease in Profits:, {greatest_decrease_month},({lowest})")
+    txtfile.write(f"Financial Analysis\n")
+    txtfile.write(f"--------------------")
+    txtfile.write(f"Total Months: {total_months}\n")
+    txtfile.write(f"Total:{net_amount}\n")
+    txtfile.write(f"Average Change: {average_change}\n")
+    txtfile.write(f"Greatest Increase in Profits:, {greatest_increase_month},({highest})")
+    txtfile.write(f"Greatest Decrease in Profits:, {greatest_decrease_month},({lowest})")
